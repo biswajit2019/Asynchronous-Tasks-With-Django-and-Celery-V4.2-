@@ -11,7 +11,7 @@ from rest_framework import serializers
 
 @shared_task(name="sum_two_numbers")
 def add(x, y):
-    return x - y
+    return x + y
 
 
 class BillingItemSerializer(serializers.ModelSerializer):

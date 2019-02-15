@@ -235,3 +235,6 @@ app.conf.beat_schedule = {
     
 }
 
+<img src="Images/task.png" alt="Task">
+
+<img src="Images/result.png" alt="Result">
