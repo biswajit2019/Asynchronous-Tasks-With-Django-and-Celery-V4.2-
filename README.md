@@ -155,6 +155,8 @@ def xsum(numbers):
     Open a terminal window, Run Celery with in your project root where manage.py lives:
 
     celery -A yourproject worker -l info
+
+    celery -A yourproject worker -l debug (for debugging)
     
     # like 
     
@@ -234,6 +236,30 @@ app.conf.beat_schedule = {
     }
     
 }
+
+12. Test Scheduled Task with Celery Beat: open another terminal windows to run scheduled task:
+
+    celery -A DjangoCeleryRedis beat -l info
+
+    celery -A DjangoCeleryRedis beat -l debug (for debugging)
+
+13. ### Known Issues and Fixes ### :
+
+    Symptom :
+
+    celery beat v4.2.0 (windowlicker) is starting.
+
+    ERROR: Pidfile (celerybeat.pid) already exists.
+
+    Seems we're already running? (pid: 12008)
+
+    Fix :
+
+    Remove celerybeat.pid file from your project.
+
+
+
+
 
 <img src="Images/task.png" alt="Task">
 

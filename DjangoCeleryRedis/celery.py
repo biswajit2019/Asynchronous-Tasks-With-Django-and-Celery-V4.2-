@@ -19,23 +19,23 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 
 from celery.schedules import crontab
-app.conf.beat_schedule = {
-    'add-every-minute-contrab': {
-        'task': 'multiply_two_numbers',
-        'schedule': crontab(),
-        'args': (16, 16),
-    },
-    'add-every-5-seconds': {
-        'task': 'multiply_two_numbers',
-        'schedule': 5.0,
-        'args': (16, 16)
-    },
-    # 'add-every-30-seconds': {
-    #     'task': 'tasks.add',
-    #     'schedule': 30.0,
-    #     'args': (16, 16)
-    # },
-}
+# app.conf.beat_schedule = {
+#     # 'add-every-minute-contrab': {
+#     #     'task': 'multiply_two_numbers',
+#     #     'schedule': crontab(),
+#     #     'args': (16, 16),
+#     # },
+#     # 'add-every-5-seconds': {
+#     #     'task': 'multiply_two_numbers',
+#     #     'schedule': 5.0,
+#     #     'args': (16, 16)
+#     # },
+#     'add-every-30-seconds': {
+#         'task': 'add',
+#         'schedule': 30.0,
+#         'args': (16, 16)
+#     },
+# }
 
 @app.task(bind=True)
 def debug_task(self):

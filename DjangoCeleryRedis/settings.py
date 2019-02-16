@@ -134,7 +134,7 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
-CELERY_BEAT_SCHEDULE = {}
+CELERY_IMPORTS = ('billing.tasks')
 
 
 REST_FRAMEWORK = {
@@ -145,4 +145,22 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     )
+}
+
+CELERY_BEAT_SCHEDULE = {
+    # 'add-every-minute-contrab': {
+    #     'task': 'multiply_two_numbers',
+    #     'schedule': crontab(),
+    #     'args': (16, 16),
+    # },
+    # 'add-every-5-seconds': {
+    #     'task': 'multiply_two_numbers',
+    #     'schedule': 5.0,
+    #     'args': (16, 16)
+    # },
+    'add-every-30-seconds': {
+        'task': 'sum_two_numbers',
+        'schedule': 30.0,
+        'args': (16, 16)
+    }
 }
